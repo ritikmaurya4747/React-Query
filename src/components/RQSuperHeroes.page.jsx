@@ -7,11 +7,11 @@ function RQSuperHeroesPage() {
     return axios.get("http://localhost:4000/superheroesa");
   };
 
-  const onSuccess = () => {
-    console.log("Perform side effect after data fetching");
+  const onSuccess = (data) => {
+    console.log("Perform side effect after data fetching",data);
 }
-  const onError = () => {
-    console.log("Perform side effect after encountering error");
+  const onError = (error) => {
+    console.log("Perform side effect after encountering error",error);
 }
 
   const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
