@@ -12,7 +12,9 @@ function RQSuperHeroesPage() {
     fetchSuperHeros,
     {
         // cacheTime : 5000,
-        staleTime : 0,
+        // staleTime : 0,
+        refetchOnMount: true, 
+        refetchOnWindowFocus : true,
     }
   );
 
