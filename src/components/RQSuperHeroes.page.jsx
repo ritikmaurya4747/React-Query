@@ -4,18 +4,29 @@ import { useQuery } from "react-query";
 
 function RQSuperHeroesPage() {
   const fetchSuperHeros = () => {
-    return axios.get("http://localhost:4000/superheroes");
+    return axios.get("http://localhost:4000/superheroesa");
   };
+
+  const onSuccess = () => {
+    console.log("Perform side effect after data fetching");
+}
+  const onError = () => {
+    console.log("Perform side effect after encountering error");
+}
 
   const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
     "super-heroe",
     fetchSuperHeros,
-    { enabled: false }
+    { 
+        enabled: false,
+        onSuccess,
+        onError,
+     }
   );
 
   console.log({ isLoading, isFetching });
 
-  if (isLoading , isFetching) {
+  if ((isLoading, isFetching)) {
     return <h2>Loading...</h2>;
   }
   if (isError) {
@@ -37,7 +48,7 @@ function RQSuperHeroesPage() {
           {data?.data.map((hero) => (
             <p
               key={hero.name}
-              className="text-center text-red-500 text-2xl font-bold                    "
+              className="text-center text-red-500 text-2xl font-bold"
             >
               {hero.name}
             </p>

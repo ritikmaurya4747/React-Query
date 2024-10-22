@@ -11,5 +11,6 @@
         refetchOnWindowFocus : true,
         refetchInterval : 2000,
         refetchIntervalInBackground : true,
+        
     }
   );  # ye bas demo code tha ki ye option work kaise karte hain chahe to use kar sakte hain
