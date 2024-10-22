@@ -7,21 +7,15 @@ function RQSuperHeroesPage() {
     return axios.get("http://localhost:4000/superheroes");
   };
 
-  const { isLoading, data, isError, error, isFetching } = useQuery(
+  const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
     "super-heroe",
     fetchSuperHeros,
-    {
-        // cacheTime : 5000,
-        // staleTime : 0,
-        refetchOnMount: true, 
-        refetchOnWindowFocus : true,
-    }
+    { enabled: false }
   );
 
-  console.log({isLoading,isFetching});
-  
+  console.log({ isLoading, isFetching });
 
-  if (isLoading) {
+  if (isLoading , isFetching) {
     return <h2>Loading...</h2>;
   }
   if (isError) {
@@ -30,14 +24,25 @@ function RQSuperHeroesPage() {
   return (
     <>
       <div className="">
-      <h2 className="text-center p-5 text-3xl font-bold">RQ Super Heroes Page</h2>
-      {data?.data.map((hero) => {
-        return (
-          <p key={hero.name} className="text-center text-red-300 text-2xl font-semibold">
-            {hero.name}
-          </p>
-        );
-      })}
+        <h2 className="text-center mt-10 py-3 text-3xl font-bold">
+          RQ Super Heroes Page
+        </h2>
+        <div className="flex flex-col items-center my-6">
+          <button
+            className="px-3 py-2 text-white font-bold mb-5 bg-blue-600 rounded-md flex justify-center items-center"
+            onClick={refetch}
+          >
+            Fetch heroes
+          </button>
+          {data?.data.map((hero) => (
+            <p
+              key={hero.name}
+              className="text-center text-red-500 text-2xl font-bold                    "
+            >
+              {hero.name}
+            </p>
+          ))}
+        </div>
       </div>
     </>
   );
