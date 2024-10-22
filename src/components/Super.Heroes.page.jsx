@@ -27,9 +27,9 @@ function SuperHeroespage() {
 
   return (
     <>
-      <h1>Super Heroes Page</h1>
+      <h1 className="text-center p-5 text-4xl font-bold">Super Heroes Page</h1>
       {data.map((hero) => {
-        return <div key={hero.name}>{hero.name}</div>;
+        return <div className="text-center text-red-300 text-2xl font-semibold" key={hero.name}>{hero.name}</div>;
       })}
     </>
   );
