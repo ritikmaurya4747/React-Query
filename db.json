@@ -1,22 +1,22 @@
 {
-    "superheroes":[
-        {
-            "id":1,
-            "name":"Batman",
-            "alterEgo": "Bruce Wayne"
-        },
-        {
-            "id":2,
-            "name":"Superman",
-            "alterEgo": "Clark Kent"
-        },
-        {
-            "id":3,
-            "name":"Wonder Women",
-            "alterEgo": "Princess Diana"
-        }
-    ],
-    "friends": [
+  "superheroes": [
+    {
+      "id": 1,
+      "name": "Batman",
+      "alterEgo": "Bruce Wayne"
+    },
+    {
+      "id": 2,
+      "name": "Superman",
+      "alterEgo": "Clark Kent"
+    },
+    {
+      "id": 3,
+      "name": "Wonder Women",
+      "alterEgo": "Princess Diana"
+    }
+  ],
+  "friends": [
     {
       "id": 1,
       "name": "Lavkush"
@@ -42,4 +42,4 @@
       "courses": ["react", "vue", "angular"]
     }
   ]
-  }
+}
