@@ -14,3 +14,5 @@
         
     }
   );  # ye bas demo code tha ki ye option work kaise karte hain chahe to use kar sakte hain
+
+# to run the localhost serve using this command ( npm run serve-json)
