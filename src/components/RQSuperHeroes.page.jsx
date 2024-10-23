@@ -2,13 +2,12 @@ import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
 import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
-
+import { Link } from "react-router-dom";
 
 const fetchSuperHeros = () => {
   return axios.get("http://localhost:4000/superheroes");
 };
 function RQSuperHeroesPage() {
-
   const onSuccess = (data) => {
     console.log("Perform side effect after data fetching", data);
   };
@@ -30,11 +29,12 @@ function RQSuperHeroesPage() {
   //   }
   // );
 
-  
-  const { isLoading, data, isError, error, isFetching, refetch } = useSuperHeroesData(onSuccess, onError
-    // same as above, but this is coming from the custom usequeryHook
-  );
-
+  const { isLoading, data, isError, error, isFetching, refetch } =
+    useSuperHeroesData(
+      onSuccess,
+      onError
+      // same as above, but this is coming from the custom usequeryHook
+    );
 
   if ((isLoading, isFetching)) {
     return <h2>Loading...</h2>;
@@ -45,7 +45,7 @@ function RQSuperHeroesPage() {
   return (
     <>
       {/* // ye wala code use karne ke liye uper select wala funtion remove or comment karne ke baad hi use kar sakate hain */}
-      {/* <div className="">
+      <div className="">
         <h2 className="text-center mt-10 py-3 text-3xl font-bold">
           RQ Super Heroes Page
         </h2>
@@ -56,21 +56,24 @@ function RQSuperHeroesPage() {
           >
             Fetch heroes
           </button>
-          {data?.data.map((hero) => (
-            <p
-              key={hero.name}
-              className="text-center text-red-500 text-2xl font-bold"
-            >
-              {hero.name}
-            </p>
-          ))}
+          {data?.data.map((hero) => {
+            return (
+              <div key={hero.id}>
+                <Link to={`/rq-super-heroes/${hero.id}`}>
+                  <p className="text-center text-red-500 text-2xl font-bold underline">
+                    {hero.name}
+                  </p>
+                </Link>
+              </div>
+            );
+          })}
         </div>
-      </div>  */}
+      </div>
 
-      {/* ------------------------------------------------------------------- */}
+      {/* ------------------------------------------------------------- */}
 
       {/* ye wala select wale funtion ke liye code hain to fetch data same as up  */}
-      <div>
+      {/* <div>
         <h2 className="text-center mt-10 py-3 text-3xl font-bold">
           RQ Super Heroes Page
         </h2>
@@ -93,7 +96,7 @@ function RQSuperHeroesPage() {
               );
             })}
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

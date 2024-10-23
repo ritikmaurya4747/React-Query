@@ -5,7 +5,9 @@ import SuperHeroespage from "./components/Super.Heroes.page";
 import Home from "./components/Home";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { ReactQueryDevtools } from "react-query/devtools";
+import RQSuperHeroPage from "./components/RQSuperHero.page";
+import { ParallelQueriesPage } from "./components/ParallelQueries.page";
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
 function App() {
@@ -27,6 +29,11 @@ function App() {
             </ul>
           </nav>
           <Routes>
+            <Route path="/rq-parallel" element={<ParallelQueriesPage />} />
+            <Route
+              path="/rq-super-heroes/:heroId"
+              element={<RQSuperHeroPage />}
+            />
             <Route path="/super-heroes" element={<SuperHeroespage />} />
             <Route path="/rq-super-heroes" element={<RQSuperHeroesPage />} />
             <Route path="/" element={<Home />} />

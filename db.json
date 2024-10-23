@@ -12,8 +12,22 @@
         },
         {
             "id":3,
-            "name":"Wonder Women 1",
+            "name":"Wonder Women",
             "alterEgo": "Princess Diana"
         }
-    ]
+    ],
+    "friends": [
+    {
+      "id": 1,
+      "name": "Lavkush"
+    },
+    {
+      "id": 2,
+      "name": "Pradeep"
+    },
+    {
+      "id": 3,
+      "name": "Sakaria"
+    }
+  ]
   }
