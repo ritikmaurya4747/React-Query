@@ -29,5 +29,17 @@
       "id": 3,
       "name": "Sakaria"
     }
+  ],
+  "users": [
+    {
+      "id": "ritik@example.com",
+      "channelId": "codevolution"
+    }
+  ],
+  "channels": [
+    {
+      "id": "codevolution",
+      "courses": ["react", "vue", "angular"]
+    }
   ]
   }
