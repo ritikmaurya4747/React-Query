@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
@@ -24,6 +25,12 @@ export const useAddSuperHeroData = () => {
   return useMutation(addSuperHero,{
     onSuccess: () => {
       queryClient.invalidateQueries("super-heroe")
+      queryClient.setQueryData("super-heroe",(oldQueryData) => {
+        return{
+          ...oldQueryData,
+          data:[...oldQueryData.data,data.data],
+        }
+      })
     },
   })
 }

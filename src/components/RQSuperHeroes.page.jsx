@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { useAddSuperHeroData, useSuperHeroesData } from "../hooks/useSuperHeroesData";
+import {
+  useAddSuperHeroData,
+  useSuperHeroesData,
+} from "../hooks/useSuperHeroesData";
 import { Link } from "react-router-dom";
 
 // const fetchSuperHeros = () => {
@@ -11,10 +14,10 @@ function RQSuperHeroesPage() {
   const [name, setName] = useState("");
   const [alterEgo, setAlterEgo] = useState("");
   const onSuccess = (data) => {
-    console.log("Perform side effect after data fetching", data);
+    // console.log("Perform side effect after data fetching", data);
   };
   const onError = (error) => {
-    console.log("Perform side effect after encountering error", error);
+    // console.log("Perform side effect after encountering error", error);
   };
 
   // const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
@@ -38,13 +41,13 @@ function RQSuperHeroesPage() {
       // same as above, but this is coming from the custom usequeryHook
     );
 
-    // ye custom hooks se aa raha hain
-    const {mutate:addHero} = useAddSuperHeroData()
+  // ye custom hooks se aa raha hain
+  const { mutate: addHero } = useAddSuperHeroData();
 
   const handleAddHeroClick = () => {
-    const hero = {name,alterEgo}
-    addHero(hero)
-  }
+    const hero = { name, alterEgo };
+    addHero(hero);
+  };
   if ((isLoading, isFetching)) {
     return <h2>Loading...</h2>;
   }
@@ -73,9 +76,10 @@ function RQSuperHeroesPage() {
             placeholder="alterEgo"
             className="placeholder:pl-2 rounded-md bg-slate-200"
           />
-          <button 
-          onClick={handleAddHeroClick}
-          className="px-3 py-2 text-white font-bold bg-green-600 rounded-md ">
+          <button
+            onClick={handleAddHeroClick}
+            className="px-3 py-2 text-white font-bold bg-green-600 rounded-md "
+          >
             Add Hero
           </button>
         </div>
@@ -87,6 +91,10 @@ function RQSuperHeroesPage() {
             Fetch heroes
           </button>
           {data?.data.map((hero) => {
+            // Add a check to ensure hero and hero.id are defined
+            if (!hero || !hero.id) {
+              return null;
+            }
             return (
               <div key={hero.id}>
                 <Link to={`/rq-super-heroes/${hero.id}`}>
