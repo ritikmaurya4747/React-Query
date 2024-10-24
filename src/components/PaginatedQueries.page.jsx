@@ -2,8 +2,15 @@ import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
 
+const pageSize = 2;
+
 const fetchColors = (pageNumber) => {
- return axios.get(`http://localhost:4000/colors?_limit=2&_page=${pageNumber}`)}
+ 
+  const start = (pageNumber - 1) * pageSize;
+  const end = start + pageSize;
+  return axios.get(`http://localhost:4000/colors?_start=${start}&_end=${end}`);
+};
+
 export const PaginatedQueriesPage = () => {
   const [pageNumber, setPageNumber] = useState(1)
   const { isLoading, isError, error, data } = useQuery(
