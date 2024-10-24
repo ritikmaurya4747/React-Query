@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
@@ -7,7 +6,7 @@ const fetchSuperHeros = () => {
 };
 const addSuperHero = (hero) => {
   return axios.post("http://localhost:4000/superheroes", hero);
-}
+};
 export const useSuperHeroesData = (onSuccess, onError) => {
   return useQuery("super-heroe", fetchSuperHeros, {
     enabled: true,
@@ -21,16 +20,49 @@ export const useSuperHeroesData = (onSuccess, onError) => {
 };
 
 export const useAddSuperHeroData = () => {
-  const queryClient = useQueryClient()
-  return useMutation(addSuperHero,{
-    onSuccess: () => {
-      queryClient.invalidateQueries("super-heroe")
-      queryClient.setQueryData("super-heroe",(oldQueryData) => {
-        return{
-          ...oldQueryData,
-          data:[...oldQueryData.data,data.data],
+  const queryClient = useQueryClient();
+  return useMutation(addSuperHero, {
+    // onSuccess: () => {
+    //   queryClient.invalidateQueries("super-heroe")
+    //   queryClient.setQueryData("super-heroe",(oldQueryData) => {
+    //     return{
+    //       ...oldQueryData,
+    //       data:[...oldQueryData.data,data.data],
+    //     }
+    //   })
+    // },
+    onMutate: async (newHero) => {
+      await queryClient.cancelQueries("super-heroe");
+      const previosHeroData = queryClient.getQueryData("super-heroe");
+      queryClient.setQueryData("super-heroe", (oldQueryData) => {
+        if(!oldQueryData?.data){
+          return {
+            ...oldQueryData,
+            data: [
+              ...oldQueryData,
+              { id: oldQueryData?.data?.length + 1, ...newHero },
+            ],
+          };
         }
-      })
+        return {
+          ...oldQueryData,
+          data: [
+            ...oldQueryData.data,
+            { id: oldQueryData.data.length + 1, ...newHero },
+          ],
+        };
+      });
+    
+      
+      return {
+        previosHeroData,
+      }
     },
-  })
-}
+    onError: (_error,_hero,context) => {
+      queryClient.setQueryData("super-heroe", context.previosHeroData);
+    },
+    onSettleda: () => {
+      queryClient.invalidateQueries("super-heroe");
+    },
+  });
+};
