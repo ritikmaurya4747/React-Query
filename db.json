@@ -1,32 +1,42 @@
 {
   "superheroes": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Batman",
       "alterEgo": "Bruce Wayne"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Superman",
       "alterEgo": "Clark Kent"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Wonder Women",
       "alterEgo": "Princess Diana"
+    },
+    {
+      "id": "8a50",
+      "name": "Shaktiman",
+      "alterEgo": "India"
+    },
+    {
+      "id": "d2ed",
+      "name": "Padman",
+      "alterEgo": "Australia"
     }
   ],
   "friends": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Lavkush"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Pradeep"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Sakaria"
     }
   ],
@@ -39,18 +49,45 @@
   "channels": [
     {
       "id": "codevolution",
-      "courses": ["react", "vue", "angular"]
+      "courses": [
+        "react",
+        "vue",
+        "angular"
+      ]
     }
   ],
   "colors": [
-    { "id": "1", "label": "red" },
-    { "id": "2", "label": "blue" },
-    { "id": "3", "label": "green" },
-    { "id": "4", "label": "yellow" },
-    { "id": "5", "label": "orange" },
-    { "id": "6", "label": "purple" },
-    { "id": "7", "label": "pink" },
-    { "id": "8", "label": "brown" }
-    
+    {
+      "id": "1",
+      "label": "red"
+    },
+    {
+      "id": "2",
+      "label": "blue"
+    },
+    {
+      "id": "3",
+      "label": "green"
+    },
+    {
+      "id": "4",
+      "label": "yellow"
+    },
+    {
+      "id": "5",
+      "label": "orange"
+    },
+    {
+      "id": "6",
+      "label": "purple"
+    },
+    {
+      "id": "7",
+      "label": "pink"
+    },
+    {
+      "id": "8",
+      "label": "brown"
+    }
   ]
 }
