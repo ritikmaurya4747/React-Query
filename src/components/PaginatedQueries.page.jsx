@@ -10,7 +10,6 @@ const fetchColors = (pageNumber) => {
   const end = start + pageSize;
   return axios.get(`http://localhost:4000/colors?_start=${start}&_end=${end}`);
 };
-
 export const PaginatedQueriesPage = () => {
   const [pageNumber, setPageNumber] = useState(1)
   const { isLoading, isError, error, data } = useQuery(
