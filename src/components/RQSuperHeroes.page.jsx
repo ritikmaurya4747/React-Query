@@ -4,9 +4,9 @@ import { useQuery } from "react-query";
 import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
 import { Link } from "react-router-dom";
 
-const fetchSuperHeros = () => {
-  return axios.get("http://localhost:4000/superheroes");
-};
+// const fetchSuperHeros = () => {
+//   return axios.get("http://localhost:4000/superheroes");
+// };
 function RQSuperHeroesPage() {
   const onSuccess = (data) => {
     console.log("Perform side effect after data fetching", data);

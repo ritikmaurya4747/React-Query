@@ -38,14 +38,18 @@ export const PaginatedQueriesPage = () => {
       <div className="flex justify-center gap-10 items-center my-6">
         <button
           className="px-3 py-2 text-white font-bold mb-5 bg-blue-600 rounded-md flex justify-center items-center"
-          onClick={() => setPageNumber((page) => page - 1)}
+          onClick={() => {
+            console.log(`Prev page: ${pageNumber}`);
+            setPageNumber((page) => page - 1)}}
           disabled={pageNumber === 1}
         >
           Prev Page
         </button>
         <button
           className="px-3 py-2 text-white font-bold mb-5 bg-blue-600 rounded-md flex justify-center items-center"
-          onClick={() => setPageNumber((page) => page + 1)}
+          onClick={() => {
+            console.log(`Next page: ${pageNumber}`);
+            setPageNumber((page) => page + 1)}}
           disabled={pageNumber === 4}
         >
           Next Page
