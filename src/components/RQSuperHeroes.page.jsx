@@ -39,11 +39,11 @@ function RQSuperHeroesPage() {
     );
 
     // ye custom hooks se aa raha hain
-    const {mutate} = useAddSuperHeroData()
+    const {mutate:addHero} = useAddSuperHeroData()
 
   const handleAddHeroClick = () => {
     const hero = {name,alterEgo}
-    mutate(hero)
+    addHero(hero)
   }
   if ((isLoading, isFetching)) {
     return <h2>Loading...</h2>;
