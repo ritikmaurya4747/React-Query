@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import { request } from "../utils/axios-utils";
 
 const fetchSuperHeros = () => {
-  return axios.get("http://localhost:4000/superheroes");
-};
+  // return axios.get("http://localhost:4000/superheroes");
+  return request({ url: '/superheroes' })};
 const addSuperHero = (hero) => {
-  return axios.post("http://localhost:4000/superheroes", hero);
+  // return axios.post("http://localhost:4000/superheroes", hero);
+  return request({url:"/superheroes",method:'POST',data:hero});
 };
 export const useSuperHeroesData = (onSuccess, onError) => {
   return useQuery("super-heroe", fetchSuperHeros, {
